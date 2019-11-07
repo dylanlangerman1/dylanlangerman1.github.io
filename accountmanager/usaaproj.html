@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>USAA Project 2</title>
+
+
+    <style>
+        body {
+            background-color: lightgrey;
+        }
+
+        #inputArea {
+            margin-left: 20px;
+            margin-top: 50px;
+        }
+
+        input {
+            background-color: white;
+            width: 500px;
+            height: 320px;
+            border: 5px solid royalblue;
+        }
+
+        h1 {
+            background-color: royalblue;
+            color: white;
+            height: 70px;
+            text-align: center;
+        }
+
+        #summarizeButton {
+            margin-left: 200px;
+            margin-top: 20px;
+        }
+
+        button {
+            font-size: 16px;
+            background-color: white;
+            border: 2px solid royalblue;
+        }
+
+        #outputArea {
+            margin-left: 660px;
+            position: relative;
+            bottom: 390px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Summarization Tool</h1>
+    <div id="inputArea">
+        <input type="text" name="initialText" value=" ">
+        <br>
+
+    </div>
+    <div id="summarizeButton">
+        <button onclick="summarizeButton()">Summarize!</button>
+    </div>
+
+    <div id="outputArea">
+        <p id="title"></p>
+        <p id="summary"></p>
+        <br>
+        <p id="approveButton"></p>
+        <p id="denyButton"></p>
+    </div>
+</body>
+<script>
+function summarizeButton() {
+    // Needs API call here
+    // Making it so that when the button is clicked, the summary API is called + the rest of the page will show
+    document.getElementById("title").innerHTML = "Summarized Content Below:"
+    // INSERT SUMMARIZED INFO BELOW. This will pull from the summary that the summary API created, and print it in the summary id found in the html
+    document.getElementById("approveButton").innerHTML = "<button onclick='splitToMedias()'>Approve of the Summary?</button>"
+    document.getElementById("denyButton").innerHTML = "<button onclick='summarizeButton()'>Summary Denied; Try Again?</button>"
+}
+function spitToMedias() {
+    // When clicked, this button will enable user to approve the summary that was given to them,
+    // and put the summary out onto different media platforms (Slack, Twitter, etc.)
+}
+</script>
+
+</html>
