@@ -56,7 +56,10 @@
 				
 	</script>
     <style>
-        
+        #formText{
+            min-width: 60vw;
+            max-width: 6vw;
+        }
         #loaded{ 
             padding:10vw;
             padding-top: 1vw;
@@ -163,7 +166,7 @@
                 <form id="myForm">
                     URL: <input type="text" name="url" id="formUrl" />
                          <br>
-                    Text: <textarea name="text" id="formText"></textarea>
+                    Text: <textarea name="text" id="formText" style="height:30vh"></textarea>
                     
                 </form>
                 <button onclick="ParseText($('#formUrl').val(), $('#formText').val())">CREATE</button>
