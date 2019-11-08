@@ -1,1076 +1,189 @@
 ﻿<!DOCTYPE html>
 <html lang="en" class="noBoard">
 <head>
-	<title>ThisOrThat</title>
+	<title>USAA</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-	<style>
-		html, body {
-   background: linear-gradient(to right, powderblue,#b6fbff );
-            xbackground: powderblue;
-			display: flex;
-			flex-direction: column;
-			width: 100%;
-			margin: 0px;
-			padding: 0px;
-			xoverflow: hidden;
-			font-family: 'Century Gothic';
-            border-style:none;
-            border-radius: 1rem;
-		}
-        #LikeDiv{
-            position:absolute;
-        }
-        img{
-            border-radius:5vw;
-            height: 47%;
-            width: 100%;
-        }
-		body {
-			height: 100%;
-		}
-        #header{
-            text-align: center;
-            height: 5vw;
-            font-size: x-large;
-    background: linear-gradient(to right, powderblue,#b6fbff );
-
-            xbackground-color: powderblue;
-            color: #2a2a2a;
-            margin-bottom: 1%;
-        }
-
-		button {
-			border: 1px solid gray;
-			border-radius: 25px;
-			background-color: #008cff;
-			color: white;
-		}
-
-		.titleContainer {
-			background-color: lightgray;
-			display: flex;
-			flex-direction: row;
-			align-items: center;
-			border: 1px solid gray;
-			border-radius: 25px;
-			padding-left: 10px;
-			padding-right: 10px;
-		}
-        #imageDiv{
-            height: 100%;
-            position:absolute;
-            height: 94%;
-            width: 100%;
-            visibility:hidden;
-                margin-top: .6vw;
-
-
-        }
-
-		.menu {
-			flex: 1;
-			text-align: right;
-			color: #bbbbbb;
-			visibility:hidden;
-		}
-
-			.menu a {
-				font-size: small;
-				color: blue;
-			}
-
-		.contentContainer {
-			flex: 1;
-			position: relative;
-			margin: 5px;
-		}
-
-		.contentPanel {
-			xposition: absolute;
-			xtop: 0px;
-			left: 0px;
-			height: 94%;
-			width: 100%;
-			visibility: hidden;
-			flex: 1;
-			/*border: 1px solid gray;
-			border-radius: 25px;*/
-		}
-
-		.logonPanel {
-			text-align: center;
-            visibility: visible;
-            position:absolute;
-            height:94%
-            
-		}
-        .leftDiv{
-            display:inline-block;
-            float: left;
-            text-align: left;
-            font-size: 5vw;
-
-        }
-
-		.accountsPanel {
-			text-align: center;
-		}
-        .center{
-            text-align:center;
-        }
-        #slider{
-            width: 100%;
-            height:10%;
-            
-        }
-        #thisDiv, #thatDiv{
-            width: 50%;
-            float: left;
-            text-align: center;
-        }
-        .smallLikeDiv{
-            text-align: center;
-            xheight: 18%;
-            padding: 10vw;
-            background-color: white;
-            xmargin: 1vw;
-            border-style:solid;
-            border-color: transparent;
-            border-top:0;
-            border-left:0;
-            border-right:0;
-
-
-        }
-        #LikeDiv{
-            width: 100%;
-            height: 94%;
-            background-color:white;
-            visibility:hidden;
-        }
-
-		.logonBox {
-			display: inline-block;
-			xtext-align: right;
-		}
-        #pic1{
-                border-style: hidden;
-                border-radius: 5vw;
-            
-        }
-        #pic2{
-            border-style: hidden;
-                border-radius: 5vw;
-        }
-
-			.logonBox div {
-				padding: 0px;
-				margin: 0px;
-			}
-
-			.logonBox hr {
-				padding: 0px;
-				margin: 0px;
-			}
-
-			.logonBox input {
-				width: 100px;
-				border: 1px inset gray;
-			}
-            #startHead{
-                position:absolute;
-                width:92%;
-            }
-            #endHead{
-                position:absolute;
-                visibility:hidden;
-                width:92%;
-            }
-		.newAccountPanel {
-			text-align: center;
-            position:absolute;
-		}
-
-		.newAccountBox {
-			display: inline-block;
-			text-align: right;
-		}
-
-			.newAccountBox input {
-				width: 100px;
-				border: 1px inset gray;
-			}
-
-			.newAccountBox hr {
-				padding: 0px;
-				margin: 0px;
-			}
-
-		.accountsBox {
-			display: inline-block;
-			width: 100%;
-		}
-        #main{
-            /*height:100%;
-            width:100%;*/
-            display: flex;
-    
-    overflow: hidden
-        }
-
-			.accountsBox hr {
-				padding: 0px;
-				margin-left:auto;
-				margin-right:auto;
-				width: 40px;
-			}
-
-		.accountRow {
-			margin-left:auto;
-			margin-right:auto;
-			width: 100%;
-		}
-        iframe{
-            visibility:hidden;
-            position: absolute;
-            
-        }
-		.chatPanel {
-			display: flex;
-			flex-direction: column;
-		}
-        #neitherDiv{
-            text-align:center;
-        }
-
-		.messagesPanel {
-			overflow-y: scroll;
-			margin-top: 20px;
-			flex: 1;
-		}
-
-		.nameTag {
-			font-weight: bold;
-			font-size:small;
-			text-decoration:none;
-			color:black;
-		}
-
-		.msg {
-			margin-top: 5px;
-		}
-        #Container{
-            position:absolute;
-            width: 100%;
-            xheight: 94%;
-        }
-        #neitherButton {
-           border-style: solid;
-           background-color: grey;
-           xheight: 6vh;
-           width:46vw;
-           font-size:8vw;
-       }
-		.chatInputPanel {
-			height: 40px;
-			margin-top: 10px;
-			border-top: 1px solid #bbbbbb;
-			border-left: none;
-			border-right: none;
-			border-bottom: none;
-			padding-left: 20px;
-			padding-right: 20px;
-			padding-bottom: 2px;
-			display: flex;
-			flex-direction: row;
-		}
-        #middleDiv{
-            visibility: hidden;
-    display: inline-block;
-        margin-bottom: 1%;
-        }
-        #middleDiv img{
-                     text-align: center;
-    height: 6%;
-    width: 4vw;
-    padding: .8vw;
-    background-color: whitesmoke;
-    border-style: solid;
-    border-radius: 9vw;
-
-        }
-        .rightDiv{
-            xfloat:right;
-            visibility:hidden;
-            display:inline-block;
-            float:right;
-            font-size: 2.7vw;
-
-        }
-		.chatInput {
-			width: 100%;
-			height: 100%;
-			overflow: hidden;
-			border: none;
-		}
-
-		.tinyLink {
-			font-size: smaller;
-			text-decoration: none;
-			color: blue;
-		}
-
-		.noBoard {
-			height: 100%;
-		}
-
-		.board {
-			height: 50%;
-		}
-
-		.sendButton {
-			margin-top: 7px;
-			width: 20px;
-			height: 20px;
-		}
-        #mainDiv{
-            height:100%;
-            border-style: solid;
-            border-width: 2.2vw;
-            border-color: transparent;
-            xborder-radius: 1rem;
-            position:sticky;
-
-        }
-
-		.left {
-			text-align: left;
-		}
-
-		.optionsTag {
-			float: right;
-			font-size: small;
-			color: blue;
-		}
-	</style>
+	
 
 	<script type="text/javascript">
-        //$( document ).ready(function() {
-        //    getImage();
-            
-        //});
-
-		
-         function myfunction(text) {
-            alert(text);
-            $('#hi').attr("href", text);
-        }
-		
-
-		//HERE'S AN EXAMPLE OF AN AJAX CALL WITH JQUERY!
-		function LogOn(uid, pass) {
-			//the url of the webservice we will be talking to
-			var webMethod = "AccountServices.asmx/LogOn";
-			//the parameters we will pass the service (in json format because curly braces)
-			//note we encode the values for transmission over the web.  All the \'s are just
-			//because we want to wrap our keynames and values in double quotes so we have to
-			//escape the double quotes (because the overall string we're creating is in double quotes!)
-			var parameters = "{\"uid\":\"" + encodeURI(uid) + "\",\"pass\":\"" + encodeURI(pass) + "\"}";
-
-			//jQuery ajax method
-			$.ajax({
-				//post is more secure than get, and allows
-				//us to send big data if we want.  really just
-				//depends on the way the service you're talking to is set up, though
-				type: "POST",
-				//the url is set to the string we created above
-				url: webMethod,
-				//same with the data
-				data: parameters,
-				//these next two key/value pairs say we intend to talk in JSON format
-				contentType: "application/json; charset=utf-8",
-				dataType: "json",
-				//jQuery sends the data and asynchronously waits for a response.  when it
-				//gets a response, it calls the function mapped to the success key here
-				success: function (msg) {
-					//the server response is in the msg object passed in to the function here
-					//since our logon web method simply returns a true/false, that value is mapped
-					//to a generic property of the server response called d (I assume short for data
-					//but honestly I don't know...)
-					if (msg.d) {
-						//server replied true, so show the accounts panel
-						//showPanel('accountsPanel');
-                         document.getElementById('neitherDiv').style.visibility = "visible";
-                        document.getElementById('imageDiv').style.visibility = "visible";
-                        document.getElementById('logonPanel').style.visibility = "hidden";
-                        document.getElementById('logonPanel').style.visibility = "hidden";
-                        document.getElementById('rightDiv').style.visibility = "visible";
-                        document.getElementById('pic1').style.visibility = "visible";
-                        document.getElementById('pic2').style.visibility = "visible";
-                        document.getElementById('middleDiv').style.visibility = "visible";
-                        $('#logonId').val(''); $('#logonPassword').val('');
-                        getIndex();
-                        getImage();
-                        
-                        counter = index;
-						//LoadAccounts();
-					}
-					else {
-						//server replied false, so let the user know
-						//the logon failed
-						alert("logon failed");
-					}
-				},
-				error: function (e) {
-					//if something goes wrong in the mechanics of delivering the
-					//message to the server or the server processing that message,
-					//then this function mapped to the error key is executed rather
-					//than the one mapped to the success key.  This is just a garbage
-					//alert becaue I'm lazy
-					alert("boo...");
-				}
-			});
-		}
-        function APIcall() {
-            var myurl = "https://www.forbes.com/sites/ewanspence/2019/10/13/microsoft-surface-duo-surface-neo-new-leak-feature-specs-patent-dual-screen-hinge/#411b33462b75"
-            //the url of the webservice we will be talking to
-			var webMethod = "https://api.meaningcloud.com/summarization-1.0?key=980a54fdf7f02c37902b078872ce6eb0&sentences=5&txt&url="+myurl+"&doc=";
-			//the parameters we will pass the service (in json format because curly braces)
-			//note we encode the values for transmission over the web.  All the \'s are just
-			//because we want to wrap our keynames and values in double quotes so we have to
-			//escape the double quotes (because the overall string we're creating is in double quotes!)
-			//var parameters = "{\"uid\":\"" + encodeURI(uid) + "\",\"pass\":\"" + encodeURI(pass) + "\"}";
-
-			//jQuery ajax method
-			$.ajax({
-				//post is more secure than get, and allows
-				//us to send big data if we want.  really just
-				//depends on the way the service you're talking to is set up, though
-				type: "GET",
-				//the url is set to the string we created above
-				url: webMethod,
-				//same with the data
-				//data: parameters,
-				//these next two key/value pairs say we intend to talk in JSON format
-				//contentType: "application/json; charset=utf-8",
-				dataType: "json",
-				//jQuery sends the data and asynchronously waits for a response.  when it
-				//gets a response, it calls the function mapped to the success key here
-				success: function (msg) {
-					//the server response is in the msg object passed in to the function here
-					//since our logon web method simply returns a true/false, that value is mapped
-					//to a generic property of the server response called d (I assume short for data
-					//but honestly I don't know...)
-					if (msg.d) {
-						//server replied true, so show the accounts panel
-						//showPanel('accountsPanel');
-                        //LoadAccounts();
-                        console.log(msg.d);
-					}
-					else {
-						//server replied false, so let the user know
-						//the logon failed
-						alert("logon failed");
-					}
-				},
-				error: function (e) {
-					//if something goes wrong in the mechanics of delivering the
-					//message to the server or the server processing that message,
-					//then this function mapped to the error key is executed rather
-					//than the one mapped to the success key.  This is just a garbage
-					//alert becaue I'm lazy
-					alert("boo...");
-				}
-			});
-		}
-			
-        
-        function test() {
-            var json = APIcall();
-            console.log(json);
-        }
-		//when we retrieve accounts, we'll put them here
-		//so that we can reference them later for admins
-		//that may want to edit accounts
-		var accountsArray;
-		//to begin with, we assume that the account is not an admin
-		var admin = false;
-
-		//this function grabs accounts and loads our account window
-		function LoadAccounts() {
-			var webMethod = "AccountServices.asmx/GetAccounts";
-			$.ajax({
-				type: "POST",
-				url: webMethod,
-				contentType: "application/json; charset=utf-8",
-				dataType: "json",
-				success: function (msg) {
-					if (msg.d.length > 0) {
-						//let's put our accounts that we get from the
-						//server into our accountsArray variable
-						//so we can use them in other functions as well
-						accountsArray = msg.d;
-						//this clears out the div that will hold our account info
-						
-						//again, we assume we're not an admin unless we see data from the server
-						//that we know only admins can see
-						
-						for (var i = 0; i < accountsArray.length; i++) {
-							//we grab on to a specific html element in jQuery
-							//by using a  # followed by that element's id.
-							var acct;
-							//if they have access to admin-level info (like userid and password) then
-							//create output that has an edit option
-							//if (accountsArray[i].userId != null) {
-							//	acct = "<div class='accountRow' id='acct" + accountsArray[i].id + "'>" +
-							//		"<a class='nameTag' href='mailto:" + accountsArray[i].email + "'>" +
-							//		accountsArray[i].firstName + " " + accountsArray[i].lastName +
-							//		"</a> <a href='#' onclick='LoadAccount(" + accountsArray[i].id+")' class='optionsTag'>edit</a></div><hr>"
-							//	admin = true;
-							//}
-							//if not, then they're not an admin so don't include the edit option
-							//else {
-							//	acct = "<div class='accountRow' id='acct" + accountsArray[i].id + "'>" +
-							//		"<a class='nameTag' href='mailto:" + accountsArray[i].email + "'>" +
-							//		accountsArray[i].firstName + " " + accountsArray[i].lastName +
-							//		"</a></div><hr>"
-							//}
-							//$("#accountsBox").append(
-							//	//anything we throw at our panel in the form of text
-							//	//will be added to the contents of that panel.  Here
-							//	//we're putting together a div that holds info on the
-							//	//account as well as an edit link if the user is an admin
-							//	acct
-							//);
-						}
-					}
-					//we're showing the account window, so let's track that...
-					accountWindowShowing = true;
-					//...because the ShowMenu function behaves differently depending on
-					//if the account window is showing or not
-					//ShowMenu();
-				},
-				error: function (e) {
-					alert("boo...");
-				}
-			});
-        }
-        function createAccountPage() {
-             document.getElementById('logonPanel').style.visibility = "hidden";
-             document.getElementById('newAccountPanel').style.visibility = "visible";
-        }
-
-		
-		
-        var imageOne;
-        var imageTwo;
-        var picArray;
+        var str = "https://www.politico.com/news/2019/11/06/trump-louisiana-election-067126";
+        var send = "";
        
-        
-        var picOne;
-        var picTwo;
-        var index;
-         function getIndex() {
-			var webMethod = "AccountServices.asmx/CurrentCount";
-            $.ajax({
-                type: "POST",
-                url: webMethod,
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (msg) {
-                    index = msg.d
-
-                  
-                    
-                },			
-				error: function (e) {
-					alert("boo...");
-                }      
-			});
-        }
-        function getImage() {
-			var webMethod = "AccountServices.asmx/GetImage";
-            $.ajax({
-                type: "POST",
-                url: webMethod,
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (msg) {
-                    picArray = msg.d
-
-                    picOne = picArray[index];
-                    var pic1Src = picArray[index].image;
-                    index++;
-                    picTwo = picArray[index];
-                    var pic2Src = picArray[index].image;
-                    index++;
-                    
-                    var img1 = document.getElementById('pic1');
-                    img1.src = pic1Src;
-                    
-                    var img2 = document.getElementById('pic2');
-                    img2.src = pic2Src;
-                    
-                },			
-				error: function (e) {
-					alert("boo...");
-                }      
-			});
-        }
-        var likePic = "";
-        function LikedImage(keyWord) {
-            for (var i = 0; i < likeArray.length; i++) {
-                if (picArray[i].keyWord == keyWord) {
-                    
-                }
-                
-
-            }
-           
-        }
-        var likeArray;
-        var arrLengt;
-         function getLikes() {
-			var webMethod = "AccountServices.asmx/GetLikes";
-            $.ajax({
-                type: "POST",
-                url: webMethod,
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (msg) {
-                    likeArray = msg.d
-                    arrLength = likeArray.length;
-
-                   
-                    
-                },			
-				error: function (e) {
-					alert("boo...");
-                }      
-			});
-		}
-		
-
-		//here's the variable to track if the account window is showing
-		var accountWindowShowing = false;
-		
-        function back() {
-            var div = document.getElementsByClassName('rightDiv');
-            document.getElementById('LikeDiv').style.visibility = "hidden";
-            document.getElementById('neitherDiv').style.visibility = "visible";
-            document.getElementById('pic1').style.visibility = "visible";
-            document.getElementById('pic2').style.visibility = "visible";
-            document.getElementById('frame').style.visibility = "hidden";
-            document.getElementById('middleDiv').style.visibility = "visible";
-            picOne.likes = 0;
-            picTwo.likes = 0;
-            $("#Container").height(0);
-            document.getElementById('endHead').style.visibility = "hidden";
-            document.getElementById('startHead').style.visibility = "visible";
-            document.getElementById('backDiv').style.visibility = "hidden";
-            document.getElementById('rightDiv').style.visibility = "visible";
-            $('.smallLikeDiv').remove();
-           
-        }
-		
-
-		
-
-		//resets the new account inputs
-		function clearNewAccount() {
-			$('#newLogonId').val("");
-			$('#newLogonPassword').val("");
-			$('#newLogonFName').val("");
-			$('#newLogonLName').val("");
-			$('#newLogonEmail').val("");
-		}
-
-		//resets the edit account inputs
-		function clearEditAccount() {
-			$('#editLogonId').val("");
-			$('#editLogonPassword').val("");
-			$('#editLogonFName').val("");
-			$('#editLogonLName').val("");
-			$('#editLogonEmail').val("");
-		}
-
-		//resets the logon inputs
-		function clearLogon() {
-			$('#logonId').val("");
-			$('#logonPassword').val("");
-		}
-
-		//passes account info to the server, to create an account request
-		function CreateAccount(userName, pass, fname, lname, email) {
-			var webMethod = "AccountServices.asmx/RequestAccount";
-			var parameters = "{\"userName\":\"" + encodeURI(userName) + "\",\"pass\":\"" + encodeURI(pass) + "\",\"firstName\":\"" + encodeURI(fname) + "\",\"lastName\":\"" + encodeURI(lname) + "\",\"email\":\"" + encodeURI(email) + "\"}";
-
+        function ParseText(url,text) {
+            var webMethod = "ServerSideUSAA.asmx/HelperAPI";
+            var parameters = "{\"url\":\"" + encodeURI(url) + "\",\"text\":\"" + encodeURI(text) + "\"}";
 			$.ajax({
-				type: "POST",
-				url: webMethod,
-				data: parameters,
-				contentType: "application/json; charset=utf-8",
-				dataType: "json",
-				success: function (msg) {
-						//showPanel('logonPanel');
-						//alert("Account request pending approval...");
-                    document.getElementById('logonPanel').style.visibility = "visible";
-                    document.getElementById('newAccountPanel').style.visibility = "hidden";
-                    alert("Account Created");
-				},
-				error: function (e) {
-					alert("boo...");
-				}
-			});
-        }
-        function SavePic(picId) {
-			var webMethod = "AccountServices.asmx/SavePicture";
-			var parameters = "{\"picture\":\"" + encodeURI(picId) + "\"}";
-
-			$.ajax({
-				type: "POST",
-				url: webMethod,
-				data: parameters,
-				contentType: "application/json; charset=utf-8",
-				dataType: "json",
-				success: function (msg) {
-						//showPanel('logonPanel');
-						//alert("saved");
-                   
-				},
-				error: function (e) {
-					alert("boo...");
-				}
-			});
-		}
-
-		//logs the user off both at the client and at the server
-		function LogOff() {
-
-            var webMethod = "AccountServices.asmx/LogOff";
-            var parameters = "{\"counter\":\"" + encodeURI(index) + "\"}";
-
-			$.ajax({
-				type: "POST",
+                type: "POST",
+                beforeSend: function () {
+                    $("#loading").css("visibility", "visible");
+                    
+                    $("#loaded").css("visibility", "hidden");
+                },
                 url: webMethod,
+                complete: function () {
+                    $("#loading").css("visibility", "hidden");
+                    
+                    $("#loaded").css("visibility", "visible");
+                },
                 data: parameters,
-				contentType: "application/json; charset=utf-8",
+                contentType: "application/json; charset=utf-8",
 				dataType: "json",
 				success: function (msg) {
 					if (msg.d) {
-						//we logged off, so go back to logon page,
-						//stop checking messages
-						//and clear the chat panel
-                        document.getElementById('imageDiv').style.visibility = "hidden";
-                        document.getElementById('logonPanel').style.visibility = "visible";
-                        document.getElementById('rightDiv').style.visibility = "hidden";
-                        document.getElementById('pic1').style.visibility = "hidden";
-                        document.getElementById('pic2').style.visibility = "hidden";
-                        document.getElementById('middleDiv').style.visibility = "hidden";
-                        document.getElementById('neitherDiv').style.visibility = "hidden";
-                        $('.smallLikeDiv').remove();
-					}
-					else {
+                        $('#twitter').html(msg.d[0]);
+                        $('#chatbox').html(msg.d[1]);
+                        $('#facebook').html(msg.d[2]);
+                        $('#learnMore').html(msg.d[3]);
+
 					}
 				},
 				error: function (e) {
-					alert("boo...");
-				}
-			});
-		}
-
-		//this function executes once jQuery has successfully loaded and is
-		//ready for business.  Usually, if we're wiring up event handlers via jQuery
-		//then this is where they go.
-		jQuery(function () {
-			//when the app loads, show the logon panel to start with!
-			showPanel('logonPanel');
-		});
-
-		
-
-		//hold on to the account being currently edited here
-		var currentAccount;
-		//load up an account for editing
-		function LoadAccount(id) {
-			showPanel('editAccountPanel');
-			currentAccount = null;
-			//find the account with a matching id in our array
-			for (var i = 0; i < accountsArray.length; i++) {
-				if (accountsArray[i].id == id) {
-					currentAccount = accountsArray[i]
-				}
-			}
-			//set up our inputs
-			if (currentAccount != null) {
-				$('#editLogonId').val(currentAccount.userId);
-				$('#editLogonPassword').val(currentAccount.password);
-				$('#editLogonFName').val(currentAccount.firstName);
-				$('#editLogonLName').val(currentAccount.lastName);
-				$('#editLogonEmail').val(currentAccount.email);
-			}
-		}
-
-		//ajax to send the edits of an account to the server
-		function EditAccount() {
-			var webMethod = "AccountServices.asmx/UpdateAccount";
-			var parameters = "{\"id\":\"" + encodeURI(currentAccount.id) + "\",\"uid\":\"" + encodeURI($('#editLogonId').val()) + "\",\"pass\":\"" + encodeURI($('#editLogonPassword').val()) + "\",\"firstName\":\"" + encodeURI($('#editLogonFName').val()) + "\",\"lastName\":\"" + encodeURI($('#editLogonLName').val()) + "\",\"email\":\"" + encodeURI($('#editLogonEmail').val()) + "\"}";
-
-			$.ajax({
-				type: "POST",
-				url: webMethod,
-				data: parameters,
-				contentType: "application/json; charset=utf-8",
-				dataType: "json",
-				success: function (msg) {
-					showPanel('accountsPanel');
-					LoadAccounts();
-				},
-				error: function (e) {
-					alert("boo...");
+					alert("Error");
 				}
 			});
         }
-        
-        //var arrDiv;
-        function LikePage() {
-            getLikes();
-           
-            for (var i = 0; i < arrLength; i++) {
-
-                var foodType = "'"+likeArray[i].toString() +"'"
-                $('<div id="smallLikeDiv' + i + '" class="smallLikeDiv" onclick="search(' + foodType + ');"></div>').appendTo('#LikeDiv');
-                var divID = document.getElementById('smallLikeDiv' + i);
-                //$('#smallLikeDiv' + i).html(likeArray[i]);
-                for (var j = 0; j < picArray.length; j++) {
-                    if (picArray[j].keyWord === likeArray[i]) {
-                        likePic = picArray[j].image;
-                    }
-                }
-                $('<img  src="'+likePic+'" class="likePic"/> ').appendTo(divID);
-                
-                
-                
-                
-                
+        $( "#formUrl" ).blur(function() {
+            if ($('#formUrl').val() != "") {
+                $('#formText').attr('readonly', 'true');
             }
-             document.getElementById('neitherDiv').style.visibility = "hidden";
-            document.getElementById('imageDiv').style.visibility = "hidden";
-            document.getElementById('pic1').style.visibility = "hidden";
-            document.getElementById('pic2').style.visibility = "hidden";
-            document.getElementById('LikeDiv').style.visibility = "visible";
-            document.getElementById('startHead').style.visibility = "hidden";
-                    document.getElementById('endHead').style.visibility = "visible";
-                    document.getElementById('rightDiv').style.visibility = "hidden";
-                    document.getElementById('backDiv').style.visibility = "visible";
-                    document.getElementById('middleDiv').style.visibility = "hidden";
-
-           
-        }
-        
-        
-        function showMap() {
-            document.getElementById('frame').style.visibility = "visible";
-            document.getElementById('neitherDiv').style.visibility = "hidden";
-                    document.getElementById('pic1').style.visibility = "hidden";
-                    document.getElementById('pic2').style.visibility = "hidden";
-                    document.getElementById('startHead').style.visibility = "hidden";
-                    document.getElementById('endHead').style.visibility = "visible";
-                    document.getElementById('rightDiv').style.visibility = "hidden";
-                    document.getElementById('backDiv').style.visibility = "visible";
-                    document.getElementById('middleDiv').style.visibility = "hidden";
-            document.getElementById('LikeDiv').style.visibility = "hidden";
-            $('.smallLikeDiv').remove();
-                    //document.getElementsByClassName('smallLikeDiv').style.visibility = "hidden";
-                    var height = $(window).height(); 
-                    $("#Container").height(height);
-            $("#Container").height($('#imageDiv').height());
-            var timer,
-                        $win = $(window); 
-
-                $win.on('resize',function(){
-                clearTimeout(timer);
-                timer = setTimeout(function(){
-                    $("#Container").height($('#imageDiv').height());
-      
-                }, 500);
-
-                });
-
-        }
-        var counter = 2;
-        var likes = 0;
-        function likeImage(stay) {
-            
-            if (stay === 'pic1') {
-                picOne.likes++;
-                $('#pic2').attr("src", picArray[index].image);
-                picTwo = picArray[index];
-                index++;
-                if (picOne.likes == 3) {
-                    search(picOne.keyWord);
-                    showMap();
-                    SavePic(picOne.keyWord);
-                    
-                }
-            }
-            if (stay === 'pic2') {
-                picTwo.likes++;
-                $('#pic1').attr("src", picArray[index].image);
-                
-                
-                picOne = picArray[index];
-                index++;
-                if (picTwo.likes == 3) {
-                    search(picTwo.keyWord);
-                    showMap();
-                    SavePic(picTwo.keyWord);
-                }
-            }
-            if (stay === 'neither') {
-               // if Neither Button is pressed, both images will be replaced with new images.
-               index++;
-               $('#pic1').attr("src", picArray[index].image);
-                picOne = picArray[index];
-                
-               index++
-               $('#pic2').attr("src", picArray[index].image);
-               picTwo = picArray[index];
-                index++;
-           }
-            
-        }
-        
-        
-        function search(input){
-         var location = input
-            document.getElementById("frame").src = "https://www.google.com/maps/embed/v1/search?key=AIzaSyBXzeuryA79A9tBdNTrQTKVLLVy7S4nkDM&q=" + location;
-            showMap();
-         
-        }
-        
-        
-        
-        
+        });
+        //$('form').submit(ParseText($('#formUrl').val(), $('#formText').val()));
+				
 	</script>
+    <style>
+        
+        #loaded{ 
+            padding:10vw;
+            padding-top: 1vw;
+            max-width:80vw;
+            position: inherit;
+        }
+        #loading{
+            padding:15vw;
+            padding-left:41vw;
+        }
+        .topnav {
+            background-color: #0e2e49;
+            overflow: hidden;
+            height: 18vh;
+        }
+        #wrapper{
+            text-align:center;
+            background-color:white;
+        }
+
+        body{
+	        xbackground-image: url("https://content.usaa.com/mcontent/static_assets/Media/prodOther_accent_brandBanner_dark_diamondBackground.svg");
+	        margin: 0;
+        }
+        .topnav a {
+            font-weight:bold;
+            font-family: Gotham,Arial,sans-serif;
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding-left: 1vw;
+            padding-right: 1vw;
+            text-decoration: none;
+            font-size: .8vw;
+            padding-top: 5vh;
+            height: 10vh;
+        }
+        button{
+             font-weight:bold;
+            font-family: Gotham,Arial,sans-serif;
+            font-size: .8vw;
+            background-color: #0e2e49;
+            color:white;
+            padding: 1vw;
+            border-radius: 1vw;
+        }
+        button:hover{
+            
+            background-color: #466c7e;
+        }
+        .topnav a:hover {
+            background-color: #466c7e;
+  
+        }
+        form{
+            margin:auto;
+            display:grid;
+            width:60vw;
+        }
+        
+        .topnav a.active {
+	        padding-top: 12vh;
+	        height: 6vh;
+        }
+        #title{
+            font-weight:bold;
+            font-family: Gotham,Arial,sans-serif;
+            font-size: 2vw;
+            position: absolute;
+            left: 40%;
+            color:white;
+            padding-top:5vw;
+        }
+        .left{
+            text-align:left;
+        }
+    </style>
 </head>
 
 <body>
-    <div id="mainDiv">
-        <div id="header">
-            <div id="startHead">
-
-                <div class="leftDiv">
-                    <strong><i> ThisOrThat!</i></strong>
-                </div>
-                <div id="middleDiv" onclick="LikePage();">
-                    <img src="http://icons.iconarchive.com/icons/google/noto-emoji-people-family-love/256/12146-yellow-heart-icon.png" alt="Alternate Text" />
-                </div>
-                <div class="rightDiv" id="rightDiv" onclick="LogOff();">
-                    Sign Out
-                </div>
-
-
-            </div>
-            <div id="endHead">
-                <div class="leftDiv">
-                    <strong><i> You Might Like</i></strong>
-                </div>
-                <div class="rightDiv" onclick="back()" id="backDiv">
-                    Back
+    <header>
+        <div class="topnav">
+            <div class="global-nav-left-container">
+                <div id="usaa-logo" class="navigation-tab usaa-logo red-stripe acc-touch-menu-wrapper">
+                    <a accesskey="1" class="highlight-rec" href="https://www.usaa.com/?wa_ref=pub_auth_nav_home"> <img src="https://content.usaa.com/mcontent/static_assets/Media/enterprise_nav_globalnav_usaalogo.svg?cacheid=4189973775_p" alt="USAA Home" title=""> </a>
                 </div>
             </div>
-
+            <a class="active" href="#home">PRODUCTS</a>
+            <a class="active" href="#news">ADVICE</a>
+            <a class="active" href="#contact">JOIN USAA</a>
+            <a class="active" href="#about">HELP</a>
+            <h1 id="title">Media Creator AI</h1>
         </div>
-        <div id="main">
-            <div id="imageDiv">
-                <img id="pic1" src="#" alt="pic" onclick="likeImage('pic1')" />
-
-                <img id="pic2" src="#" alt="pic" onclick="likeImage('pic2')" />
-                <div id="neitherDiv">
-                    <!--Neither Button Tag-->
-                    <button id="neitherButton" type="button" onclick="likeImage('neither')"> Neither! </button>
+    </header>
+    <main>
+        <div id="wrapper">
+            <h1>MEDIA CREATOR AI</h1>
+            <div id="loading" style="position:absolute; visibility:hidden">
+                <div id="container">
+                    <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="Loading" />
                 </div>
             </div>
-            <div id="newAccountPanel" class="contentPanel newAccountPanel">
-                <div class="newAccountBox">
-                    <form onsubmit="CreateAccount($('#newUserName').val(), $('#newLogonPassword').val(), $('#newLogonFName').val(), $('#newLogonLName').val(), $('#newLogonEmail').val()); return false;">
-                        <div class="center">Create Account</div>
-                        <!--<div><a href="#" onclick="showPanel('logonPanel')" class="tinyLink">...or log on</a></div>-->
-                        <hr />
-                        <div>
-                            Username: <input type="text" id="newUserName" />
-                        </div>
-                        <div>
-                            Password: <input type="password" id="newLogonPassword" />
-                        </div>
-                        <div>
-                            First Name: <input type="text" id="newLogonFName" />
-                        </div>
-                        <div>
-                            Last Name: <input type="text" id="newLogonLName" />
-                        </div>
-                        <div>
-                            Email: <input type="text" id="newLogonEmail" />
-                        </div>
-                        <hr />
-                        <div class="center">
-                            <button type="submit">Create!</button>
-                        </div>
-                    </form>
+            <div id="loaded">
+                <form id="myForm">
+                    URL: <input type="text" name="url" id="formUrl" />
+                         <br>
+                    Text: <textarea name="text" id="formText"></textarea>
+                    
+                </form>
+                <button onclick="ParseText($('#formUrl').val(), $('#formText').val())">CREATE</button>
+                <div id="twitter" class="left">
 
                 </div>
+                <div id="chatbox" class="left">
 
-            </div>
-            <div id="LikeDiv">
+                </div>
+                <div id="facebook" class="left">
 
-            </div>
-            <div id="logonPanel" class="contentPanel logonPanel">
-                <div class="logonBox">
-                    <form onsubmit="LogOn($('#logonId').val(), $('#logonPassword').val()); return false;">
-                        <div>Log On</div>
-
-                        <hr />
-                        <div style="    text-align: end;">
-                            Username: <input type="text" id="logonId" />
-                        </div>
-                        <div style="    text-align: end;">
-                            Password: <input type="password" id="logonPassword" />
-                        </div>
-                        <hr />
-                        <div><a href="#" onclick="createAccountPage();" style="float: left;" class="tinyLink">Create Account</a></div>
-                        <div>
-                            <button type="submit">Sign In</button>
-                        </div>
-                    </form>
+                </div>
+                <div id="learnMore" class="left">
 
                 </div>
             </div>
         </div>
-        <div id="Container"
-             style=" position:relative; display:block; width: 100%">
-            <iframe id="frame"
-                    width="100%" height="100%"
-                    src="https://www.google.com/maps/embed/v1/search?key=AIzaSyBXzeuryA79A9tBdNTrQTKVLLVy7S4nkDM&q=pizza&center=33.4183,-111.9307&zoom=60"
-                    frameborder="0" allowfullscreen=""
-                    style="position:absolute; top:0; left: 0"></iframe>
-        </div>
-        <br>
-
-
-
-
-    </div>
-
-    <h1 id="123" onclick="APIcall()">123</h1>
-    <a id="hi" href="#">hi</a>
-
-
-
+        
+    </main>
+    
+    
 </body>
 </html>
