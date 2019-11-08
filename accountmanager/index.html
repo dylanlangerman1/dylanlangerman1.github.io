@@ -1,1 +1,182 @@
-index
+﻿<!DOCTYPE html>
+<html lang="en" class="noBoard">
+<head>
+	<title>USAA</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	
+
+	<script type="text/javascript">
+        var str = "https://www.politico.com/news/2019/11/06/trump-louisiana-election-067126";
+        var send = "";
+       
+        function ParseText(url,text) {
+            var webMethod = "ServerSideUSAA.asmx/HelperAPI";
+            var parameters = "{\"url\":\"" + encodeURI(url) + "\",\"text\":\"" + encodeURI(text) + "\"}";
+			$.ajax({
+                type: "POST",
+                beforeSend: function () {
+                    $("#loading").css("visibility", "visible");
+                    
+                    $("#loaded").css("visibility", "hidden");
+                },
+                url: webMethod,
+                complete: function () {
+                    $("#loading").css("visibility", "hidden");
+                    
+                    $("#loaded").css("visibility", "visible");
+                },
+                data: parameters,
+                contentType: "application/json; charset=utf-8",
+				dataType: "json",
+				success: function (msg) {
+					if (msg.d) {
+                        $('#twitter').html(msg.d[0]);
+                        $('#chatbox').html(msg.d[1]);
+                        $('#facebook').html(msg.d[2]);
+                        $('#learnMore').html(msg.d[3]);
+
+					}
+				},
+				error: function (e) {
+					alert("Error");
+				}
+			});
+        }
+        //$('form').submit(ParseText($('#formUrl').val(), $('#formText').val()));
+				
+	</script>
+    <style>
+        #loaded{ 
+            padding:10vw;
+            padding-top: 1vw;
+            max-width:80vw;
+            position: inherit;
+        }
+        #loading{
+            padding:15vw;
+            padding-left:41vw;
+        }
+        .topnav {
+            background-color: #0e2e49;
+            overflow: hidden;
+            height: 18vh;
+        }
+        #wrapper{
+            text-align:center;
+            background-color:white;
+        }
+
+        body{
+	        xbackground-image: url("https://content.usaa.com/mcontent/static_assets/Media/prodOther_accent_brandBanner_dark_diamondBackground.svg");
+	        margin: 0;
+        }
+        .topnav a {
+            font-weight:bold;
+            font-family: Gotham,Arial,sans-serif;
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding-left: 1vw;
+            padding-right: 1vw;
+            text-decoration: none;
+            font-size: .8vw;
+            padding-top: 5vh;
+            height: 10vh;
+        }
+        button{
+             font-weight:bold;
+            font-family: Gotham,Arial,sans-serif;
+            font-size: .8vw;
+            background-color: #0e2e49;
+            color:white;
+            padding: 1vw;
+            border-radius: 1vw;
+        }
+        button:hover{
+            
+            background-color: #466c7e;
+        }
+        .topnav a:hover {
+            background-color: #466c7e;
+  
+        }
+        form{
+            margin:auto;
+            display:grid;
+            width:60vw;
+        }
+        .topnav a.active {
+	        padding-top: 12vh;
+	        height: 6vh;
+        }
+        #title{
+            font-weight:bold;
+            font-family: Gotham,Arial,sans-serif;
+            font-size: 2vw;
+            position: absolute;
+            left: 40%;
+            color:white;
+            padding-top:5vw;
+        }
+        .left{
+            text-align:left;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="topnav">
+            <div class="global-nav-left-container">
+                <div id="usaa-logo" class="navigation-tab usaa-logo red-stripe acc-touch-menu-wrapper">
+                    <a accesskey="1" class="highlight-rec" href="https://www.usaa.com/?wa_ref=pub_auth_nav_home"> <img src="https://content.usaa.com/mcontent/static_assets/Media/enterprise_nav_globalnav_usaalogo.svg?cacheid=4189973775_p" alt="USAA Home" title=""> </a>
+                </div>
+            </div>
+            <a class="active" href="#home">PRODUCTS</a>
+            <a class="active" href="#news">ADVICE</a>
+            <a class="active" href="#contact">JOIN USAA</a>
+            <a class="active" href="#about">HELP</a>
+            <h1 id="title">Media Creator AI</h1>
+        </div>
+    </header>
+    <main>
+        <div id="wrapper">
+            <h1>MEDIA CREATOR AI</h1>
+            <div id="loading" style="position:absolute; visibility:hidden">
+                <div id="container">
+                    <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="Loading" />
+                </div>
+            </div>
+            <div id="loaded">
+                <form id="myForm">
+                    URL: <input type="text" name="url" id="formUrl" />
+                         <br>
+                    Text: <textarea name="text" id="formText"></textarea>
+                    
+                </form>
+                <button onclick="ParseText($('#formUrl').val(), $('#formText').val())">CREATE</button>
+                <div id="twitter" class="left">
+
+                </div>
+                <div id="chatbox" class="left">
+
+                </div>
+                <div id="facebook" class="left">
+
+                </div>
+                <div id="learnMore" class="left">
+
+                </div>
+            </div>
+        </div>
+        
+    </main>
+    
+    
+</body>
+</html>
