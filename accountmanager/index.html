@@ -47,11 +47,50 @@
 				}
 			});
         }
-        $( "#formUrl" ).blur(function() {
-            if ($('#formUrl').val() != "") {
-                $('#formText').attr('readonly', 'true');
+        $('#formUrl').blur(function() {
+            if ($(this).val() != "") {
+                $('input').attr('readonly', 'true');
+            
+                $(this).attr('readonly', 'false');
             }
         });
+        function urlBlur() {
+            
+            if ($('#formUrl').val() != "") {
+                $('#formText').attr('readonly', 'true');
+                var pattern = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
+                if (pattern.test($('#formUrl').val()) != true) {
+                    
+                    $("#urlSpan").css("visibility", "visible");
+                    $('#formUrl').css('border-color', "red")
+                }
+                else {
+                    $("#urlSpan").css("visibility", "hidden");
+                    $('#formUrl').css('border-color', "green")
+                }
+                 
+
+            }
+            if ($('#formUrl').val() === "") {
+                $('#formText').removeAttr("readonly");
+                $("#urlSpan").css("visibility", "hidden");
+                $('#formUrl').css('border-color', "");
+
+            }
+        }
+        function textBlur() {
+            
+            if ($('#formText').val() != "") {
+                $('#formUrl').attr('readonly', 'true');
+
+            }
+            if ($('#formText').val() === "") {
+                 $('#formUrl').removeAttr("readonly");
+
+            }
+        }
+
+        
         //$('form').submit(ParseText($('#formUrl').val(), $('#formText').val()));
 				
 	</script>
@@ -136,6 +175,9 @@
         .left{
             text-align:left;
         }
+        span{
+            visibility:hidden;
+        }
     </style>
 </head>
 
@@ -164,21 +206,26 @@
             </div>
             <div id="loaded">
                 <form id="myForm">
-                    URL: <input type="text" name="url" id="formUrl" />
-                         <br>
-                    Text: <textarea name="text" id="formText" style="height:30vh"></textarea>
-                    
+                    URL: <input type="text" name="url" id="formUrl" onkeyup="urlBlur()" />
+
+                    <span id="urlSpan" class="left">URL inncorrect</span>
+                    <br>
+                    Text: <textarea name="text" id="formText" style="height:30vh" onkeyup="textBlur()"></textarea>
+
                 </form>
                 <button onclick="ParseText($('#formUrl').val(), $('#formText').val())">CREATE</button>
                 <div id="twitter" class="left">
 
                 </div>
+                <br>
                 <div id="chatbox" class="left">
 
                 </div>
+                <br>
                 <div id="facebook" class="left">
 
                 </div>
+                <br>
                 <div id="learnMore" class="left">
 
                 </div>
