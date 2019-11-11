@@ -11,49 +11,51 @@
 	
 
 	<script type="text/javascript">
+        var validEntry = false;
         var str = "https://www.politico.com/news/2019/11/06/trump-louisiana-election-067126";
         var send = "";
        
-        function ParseText(url,text) {
-            var webMethod = "ServerSideUSAA.asmx/HelperAPI";
-            var parameters = "{\"url\":\"" + encodeURI(url) + "\",\"text\":\"" + encodeURI(text) + "\"}";
-			$.ajax({
-                type: "POST",
-                beforeSend: function () {
-                    $("#loading").css("visibility", "visible");
-                    
-                    $("#loaded").css("visibility", "hidden");
-                },
-                url: webMethod,
-                complete: function () {
-                    $("#loading").css("visibility", "hidden");
-                    
-                    $("#loaded").css("visibility", "visible");
-                },
-                data: parameters,
-                contentType: "application/json; charset=utf-8",
-				dataType: "json",
-				success: function (msg) {
-					if (msg.d) {
-                        $('#twitter').html(msg.d[0]);
-                        $('#chatbox').html(msg.d[1]);
-                        $('#facebook').html(msg.d[2]);
-                        $('#learnMore').html(msg.d[3]);
+        function ParseText(url, text, valid) {
+            if (valid) {
+                var webMethod = "ServerSideUSAA.asmx/HelperAPI";
+                var parameters = "{\"url\":\"" + encodeURI(url) + "\",\"text\":\"" + encodeURI(text) + "\"}";
+                $.ajax({
+                    type: "POST",
+                    beforeSend: function () {
+                        $("#loading").css("visibility", "visible");
 
-					}
-				},
-				error: function (e) {
-					alert("Error");
-				}
-			});
-        }
-        $('#formUrl').blur(function() {
-            if ($(this).val() != "") {
-                $('input').attr('readonly', 'true');
-            
-                $(this).attr('readonly', 'false');
+                        $("#loaded").css("visibility", "hidden");
+                    },
+                    url: webMethod,
+                    complete: function () {
+                        $("#loading").css("visibility", "hidden");
+
+                        $("#loaded").css("visibility", "visible");
+                    },
+                    data: parameters,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (msg) {
+                        if (msg.d) {
+                            $('#twitter').html(msg.d[0]);
+                            $('#chatbox').html(msg.d[1]);
+                            $('#facebook').html(msg.d[2]);
+                            $('#learnMore').html(msg.d[3]);
+                            $("#results").css("visibility", "visible");
+                        }
+                    },
+                    error: function (e) {
+                        alert("Error");
+                    }
+                });
+
             }
-        });
+            else {
+                alert("Not a valid entry. Click help for more info.");
+            }
+           
+        }
+        
         function urlBlur() {
             
             if ($('#formUrl').val() != "") {
@@ -62,11 +64,13 @@
                 if (pattern.test($('#formUrl').val()) != true) {
                     
                     $("#urlSpan").css("visibility", "visible");
-                    $('#formUrl').css('border-color', "red")
+                    $('#formUrl').css('border-color', "red");
+                    validEntry = false;
                 }
                 else {
                     $("#urlSpan").css("visibility", "hidden");
-                    $('#formUrl').css('border-color', "green")
+                    $('#formUrl').css('border-color', "green");
+                    validEntry = true;
                 }
                  
 
@@ -75,17 +79,33 @@
                 $('#formText').removeAttr("readonly");
                 $("#urlSpan").css("visibility", "hidden");
                 $('#formUrl').css('border-color', "");
+                validEntry = false;
 
             }
         }
         function textBlur() {
+            var count = $('#formText').val().length;
             
+            $('#count').html(count);
+            if (count < 15) {
+                $('#formText').css('border-color', "red");
+                $("#textSpan").css("visibility", "visible");
+                validEntry = false;
+            }
+            if (count > 14) {
+                $('#formText').css('border-color', "green");
+                $("#textSpan").css("visibility", "hidden");
+                validEntry = true;
+            }
             if ($('#formText').val() != "") {
                 $('#formUrl').attr('readonly', 'true');
 
             }
             if ($('#formText').val() === "") {
-                 $('#formUrl').removeAttr("readonly");
+                $('#formUrl').removeAttr("readonly");
+                $('#formText').css('border-color', "");
+                $("#textSpan").css("visibility", "hidden");
+                validEntry = false;
 
             }
         }
@@ -95,6 +115,9 @@
 				
 	</script>
     <style>
+        html{
+            font-family: Gotham,Arial,sans-serif;
+        }
         #formText{
             min-width: 60vw;
             max-width: 6vw;
@@ -174,9 +197,30 @@
         }
         .left{
             text-align:left;
+            float:left;
+        }
+        .hidden{
+            visibility:hidden;
+        }
+        .right{
+            text-align: right;
+            float:right;
+            
         }
         span{
-            visibility:hidden;
+            font-style: italic;
+            color: gray;
+        }
+        .result{
+            width: 100%;
+            height: 12vh;
+            margin: 1vw;
+            max-width:80vw;
+            min-width:80vw;
+        }
+        textarea{
+            font-family: Gotham,Arial,sans-serif;
+            font-size: 1.3vw;
         }
     </style>
 </head>
@@ -192,13 +236,13 @@
             <a class="active" href="#home">PRODUCTS</a>
             <a class="active" href="#news">ADVICE</a>
             <a class="active" href="#contact">JOIN USAA</a>
-            <a class="active" href="#about">HELP</a>
+            <a class="active" href="Help.html">HELP</a>
             <h1 id="title">Media Creator AI</h1>
         </div>
     </header>
     <main>
         <div id="wrapper">
-            <h1>MEDIA CREATOR AI</h1>
+            
             <div id="loading" style="position:absolute; visibility:hidden">
                 <div id="container">
                     <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="Loading" />
@@ -208,26 +252,36 @@
                 <form id="myForm">
                     URL: <input type="text" name="url" id="formUrl" onkeyup="urlBlur()" />
 
-                    <span id="urlSpan" class="left">URL inncorrect</span>
+                    <span id="urlSpan" class="left hidden">Not a valid URL</span>
                     <br>
                     Text: <textarea name="text" id="formText" style="height:30vh" onkeyup="textBlur()"></textarea>
+                          <div>
+                              <span id="textSpan" class="left hidden">Must be at least 15 characters</span>
+                              <div class="right">
+                                  <span id="count" class="right">0</span><span class="right">Character Count: </span>
+                              </div>
+                          </div>
+                    
+
 
                 </form>
-                <button onclick="ParseText($('#formUrl').val(), $('#formText').val())">CREATE</button>
-                <div id="twitter" class="left">
+                <button onclick="ParseText($('#formUrl').val(), $('#formText').val(),validEntry)">CREATE</button>
+                <div class="hidden" id="results">
+                    <textarea id="twitter" class="left result">
 
-                </div>
-                <br>
-                <div id="chatbox" class="left">
+                </textarea>
+                    <br>
+                    <textarea id="chatbox" class="left result">
 
-                </div>
-                <br>
-                <div id="facebook" class="left">
+                </textarea>
+                    <br>
+                    <textarea id="facebook" class="left result">
 
-                </div>
-                <br>
-                <div id="learnMore" class="left">
+                </textarea>
+                    <br>
+                    <textarea id="learnMore" class="left result">
 
+                </textarea>
                 </div>
             </div>
         </div>
