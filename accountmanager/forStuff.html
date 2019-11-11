@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+
+        function myfunction(text) {
+            var hrefstr = 'sds/sdsd/' + text;
+            $('#hi').attr("href", hrefstr);
+        }
+    </script>
+</head>
+
+<body>
+    <h1 id="123" onclick="myfunction(this.id)">123</h1>
+    <a id="hi"  href="#">hi</a>
+</body>
+</html>
