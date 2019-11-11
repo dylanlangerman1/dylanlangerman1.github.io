@@ -1,20 +1,22 @@
 ﻿<!DOCTYPE html>
 <html lang="en" class="noBoard">
 <head>
-	<title>USAA</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>USAA</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-	
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-	<script type="text/javascript">
+
+
+    <script type="text/javascript">
         var validEntry = false;
         var str = "https://www.politico.com/news/2019/11/06/trump-louisiana-election-067126";
         var send = "";
-       
+
         function ParseText(url, text, valid) {
             if (valid) {
                 var webMethod = "ServerSideUSAA.asmx/HelperAPI";
@@ -53,16 +55,16 @@
             else {
                 alert("Not a valid entry. Click help for more info.");
             }
-           
+
         }
-        
+
         function urlBlur() {
-            
+
             if ($('#formUrl').val() != "") {
                 $('#formText').attr('readonly', 'true');
                 var pattern = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
                 if (pattern.test($('#formUrl').val()) != true) {
-                    
+
                     $("#urlSpan").css("visibility", "visible");
                     $('#formUrl').css('border-color', "red");
                     validEntry = false;
@@ -72,7 +74,7 @@
                     $('#formUrl').css('border-color', "green");
                     validEntry = true;
                 }
-                 
+
 
             }
             if ($('#formUrl').val() === "") {
@@ -85,7 +87,7 @@
         }
         function textBlur() {
             var count = $('#formText').val().length;
-            
+
             $('#count').html(count);
             if (count < 15) {
                 $('#formText').css('border-color', "red");
@@ -110,44 +112,50 @@
             }
         }
 
-        
+
         //$('form').submit(ParseText($('#formUrl').val(), $('#formText').val()));
-				
-	</script>
+
+    </script>
     <style>
-        html{
+        html {
             font-family: Gotham,Arial,sans-serif;
         }
-        #formText{
+
+        #formText {
             min-width: 60vw;
             max-width: 6vw;
         }
-        #loaded{ 
-            padding:10vw;
+
+        #loaded {
+            padding: 10vw;
             padding-top: 1vw;
-            max-width:80vw;
+            max-width: 80vw;
             position: inherit;
+            margin:auto;
         }
-        #loading{
-            padding:15vw;
-            padding-left:41vw;
+
+        #loading {
+            padding: 15vw;
+            padding-left: 41vw;
         }
+
         .topnav {
             background-color: #0e2e49;
             overflow: hidden;
             height: 18vh;
         }
-        #wrapper{
-            text-align:center;
-            background-color:white;
+
+        #wrapper {
+            background-color: white;
         }
 
-        body{
-	        xbackground-image: url("https://content.usaa.com/mcontent/static_assets/Media/prodOther_accent_brandBanner_dark_diamondBackground.svg");
-	        margin: 0;
+        body {
+            xbackground-image: url("https://content.usaa.com/mcontent/static_assets/Media/prodOther_accent_brandBanner_dark_diamondBackground.svg");
+            margin: 0;
         }
+
         .topnav a {
-            font-weight:bold;
+            font-weight: bold;
             font-family: Gotham,Arial,sans-serif;
             float: left;
             color: #f2f2f2;
@@ -159,68 +167,78 @@
             padding-top: 5vh;
             height: 10vh;
         }
-        button{
-             font-weight:bold;
+
+        button {
+            font-weight: bold;
             font-family: Gotham,Arial,sans-serif;
             font-size: .8vw;
             background-color: #0e2e49;
-            color:white;
+            color: white;
             padding: 1vw;
             border-radius: 1vw;
+            margin: auto;
+            display: inherit;
         }
-        button:hover{
-            
-            background-color: #466c7e;
-        }
+
+            button:hover {
+                background-color: #466c7e;
+            }
+
         .topnav a:hover {
             background-color: #466c7e;
-  
         }
-        form{
-            margin:auto;
-            display:grid;
-            width:60vw;
+
+        form {
+            margin: auto;
+            display: grid;
+            width: 60vw;
         }
-        
+
         .topnav a.active {
-	        padding-top: 12vh;
-	        height: 6vh;
+            padding-top: 12vh;
+            height: 6vh;
         }
-        #title{
-            font-weight:bold;
+
+        #title {
+            font-weight: bold;
             font-family: Gotham,Arial,sans-serif;
             font-size: 2vw;
             position: absolute;
             left: 40%;
-            color:white;
-            padding-top:5vw;
+            color: white;
+            padding-top: 5vw;
         }
-        .left{
-            text-align:left;
-            float:left;
+
+        .left {
+            text-align: left;
+            float: left;
         }
-        .hidden{
-            visibility:hidden;
+
+        .hidden {
+            visibility: hidden;
         }
-        .right{
+
+        .right {
             text-align: right;
-            float:right;
-            
+            float: right;
         }
-        span{
+
+        span {
             font-style: italic;
             color: gray;
         }
-        .result{
-            width: 100%;
+
+        .result {
+            width: 30vw;
             height: 12vh;
             margin: 1vw;
-            max-width:80vw;
-            min-width:80vw;
+            max-width: 30vw;
+            min-width: 30vw;
         }
-        textarea{
+
+        textarea {
             font-family: Gotham,Arial,sans-serif;
-            font-size: 1.3vw;
+            font-size: 1.1vw;
         }
     </style>
 </head>
@@ -242,7 +260,7 @@
     </header>
     <main>
         <div id="wrapper">
-            
+
             <div id="loading" style="position:absolute; visibility:hidden">
                 <div id="container">
                     <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="Loading" />
@@ -255,39 +273,99 @@
                     <span id="urlSpan" class="left hidden">Not a valid URL</span>
                     <br>
                     Text: <textarea name="text" id="formText" style="height:30vh" onkeyup="textBlur()"></textarea>
-                          <div>
-                              <span id="textSpan" class="left hidden">Must be at least 15 characters</span>
-                              <div class="right">
-                                  <span id="count" class="right">0</span><span class="right">Character Count: </span>
-                              </div>
-                          </div>
-                    
+                    <div>
+                        <span id="textSpan" class="left hidden">Must be at least 15 characters</span>
+                        <div class="right">
+                            <span id="count" class="right">0</span><span class="right">Character Count: </span>
+                        </div>
+                    </div>
+
 
 
                 </form>
-                <button onclick="ParseText($('#formUrl').val(), $('#formText').val(),validEntry)">CREATE</button>
-                <div class="hidden" id="results">
-                    <textarea id="twitter" class="left result">
+                <button onclick="ParseText($('#formUrl').val(), $('#formText').val(),validEntry)" class="col-md-2 col-md-offset-5">CREATE</button>
+                <div id="results">
+                    
+                    <div class="container">
 
-                </textarea>
-                    <br>
-                    <textarea id="chatbox" class="left result">
+                        <!-- Page Heading -->
+                        <h1 class="left" style="display:contents;">
+                            Media
 
-                </textarea>
-                    <br>
-                    <textarea id="facebook" class="left result">
+                        </h1>
 
-                </textarea>
-                    <br>
-                    <textarea id="learnMore" class="left result">
 
-                </textarea>
+                        <div class="row">
+                            <div class="col-lg-6 mb-4">
+                                <div class="card h-100">
+
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                            <a href="#">Twitter</a>
+                                            <img src="https://content.usaa.com/mcontent/static_assets/Media/SocMedIcon_twitter_v2.png?cacheid=2393434372_p" alt="">
+                                        </h4>
+                                        <p contenteditable="true" class="card-text" id="twitter">
+
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mb-4">
+                                <div class="card h-100">
+
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                            <a href="#">Chatbot</a>
+                                        </h4>
+                                        <p contenteditable="true" class="card-text" id="chatbox">
+
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mb-4">
+                                <div class="card h-100">
+
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                            <a href="#">Facebook</a>
+                                            <img src="https://content.usaa.com/mcontent/static_assets/Media/SocMedIcon_facebook_v2.png?cacheid=2110766211_p" alt="fb" />
+                                        </h4>
+                                        <p contenteditable="true" class="card-text" id="facebook">
+
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mb-4">
+                                <div class="card h-100">
+
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                            <a href="#">Learn More</a>
+                                        </h4>
+                                        <p contenteditable="true" class="card-text" id="learnMore">
+
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                    
                 </div>
             </div>
         </div>
-        
     </main>
-    
-    
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 </body>
 </html>
