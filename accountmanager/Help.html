@@ -1,130 +1,174 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en" class="noBoard">
 <head>
-    <meta charset="utf-8" />
-    <title></title>
+    <title>USAA</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+
+    
     <style>
-        html{
+        html {
             font-family: Gotham,Arial,sans-serif;
+            border-radius: 1vw;
         }
-        
+
+        main {
+            padding: 5%;
+        }
+
+        .container {
+            padding: 0;
+        }
+
+        #formText {
+        }
+
+        #loaded {
+            padding-top: 1vw;
+            position: inherit;
+            margin: auto;
+        }
+
+        #loading {
+            padding-top: 10%;
+        }
+
         .topnav {
             background-color: #0e2e49;
             overflow: hidden;
             height: 18vh;
         }
-        #wrapper{
-            margin:auto;
-            width:80vw;
-            background-color:white;
+
+        #wrapper {
+            background-color: white;
         }
 
-        body{
-	        xbackground-image: url("https://content.usaa.com/mcontent/static_assets/Media/prodOther_accent_brandBanner_dark_diamondBackground.svg");
-	        margin: 0;
+        body {
+            xbackground-image: url("https://content.usaa.com/mcontent/static_assets/Media/prodOther_accent_brandBanner_dark_diamondBackground.svg");
+            margin: auto;
         }
-        .topnav a {
-            font-weight:bold;
-            font-family: Gotham,Arial,sans-serif;
-            float: left;
-            color: #f2f2f2;
-            text-align: center;
-            padding-left: 1vw;
-            padding-right: 1vw;
-            text-decoration: none;
-            font-size: .8vw;
-            padding-top: 5vh;
-            height: 10vh;
-        }
-        button{
-             font-weight:bold;
-            font-family: Gotham,Arial,sans-serif;
-            font-size: .8vw;
-            background-color: #0e2e49;
-            color:white;
-            padding: 1vw;
-            border-radius: 1vw;
-        }
-        button:hover{
-            
-            background-color: #466c7e;
-        }
-        .topnav a:hover {
-            background-color: #466c7e;
-  
-        }
-        
-        
-        .topnav a.active {
-	        padding-top: 12vh;
-	        height: 6vh;
-        }
-        #title{
-            font-weight:bold;
-            font-family: Gotham,Arial,sans-serif;
-            font-size: 2vw;
-            position: absolute;
-            left: 40%;
-            color:white;
-            padding-top:5vw;
-        }
-        .left{
-            text-align:left;
-            float:left;
-        }
-        .hidden{
-            visibility:hidden;
-        }
-        .right{
+
+        a {
             text-align: right;
-            float:right;
-            
         }
-        span{
+
+        button {
+            font-weight: bold;
+            margin: auto;
+            display: inherit;
+        }
+
+            button:hover {
+                background-color: #466c7e;
+            }
+
+
+        form {
+            margin: auto;
+            display: grid;
+        }
+
+
+
+
+
+        .left {
+            text-align: left;
+            float: left;
+        }
+
+        .hidden {
+            visibility: hidden;
+        }
+
+        .right {
+            text-align: right;
+            float: right;
+        }
+
+        .btn-primary {
+            background-color: #343a40;
+            border-color: #343a40;
+        }
+
+        span {
             font-style: italic;
             color: gray;
         }
-        
+
+
+        textarea {
+            font-family: Gotham,Arial,sans-serif;
+            font-size: large;
+        }
     </style>
 </head>
+
 <body>
-    <header>
-        <div class="topnav">
-            <div class="global-nav-left-container">
-                <div id="usaa-logo" class="navigation-tab usaa-logo red-stripe acc-touch-menu-wrapper">
-                    <a accesskey="1" class="highlight-rec" href="https://www.usaa.com/?wa_ref=pub_auth_nav_home"> <img src="https://content.usaa.com/mcontent/static_assets/Media/enterprise_nav_globalnav_usaalogo.svg?cacheid=4189973775_p" alt="USAA Home" title=""> </a>
-                </div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+        <div class="container">
+
+            <div id="usaa-logo" class="navigation-tab usaa-logo red-stripe acc-touch-menu-wrapper">
+                <a accesskey="1" class="highlight-rec" href="index.html"> <img src="images/logo.png" alt="USAA Home" title="" style="height:10vh;"> </a>
             </div>
-            <a class="active" href="#home">PRODUCTS</a>
-            <a class="active" href="#news">ADVICE</a>
-            <a class="active" href="#contact">JOIN USAA</a>
-            <a class="active" href="#about">HELP</a>
-            <h1 id="title">Help</h1>
+            </a>
+            <button class="navbar-toggler" type="button" style="margin:0;" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto" style="float:right;">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">
+                            Media Creator AI
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Help.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </header>
+    </nav>
+
     <main>
-        <div id="wrapper">
-            <div id="help">
-                Hello, and welcome to media creator AI. Media creator AI always you to create media for Twitter, Facebook, Chatbox, and Learn More.
-                <br>
-                <br>
-                To create media either enter in text or a url. You may not enter both.
-                <br>
-                A url must start with http(s)://www.(website name). For best results please try and find a website that is simple.
-                <br>
-                Text entries must be at least 15 characters. For best results please try and write atleast 6 sentences.
-                <br>
-                After entering a url or text press the create button. Media for different channels will display below.
-                <br>
-                <br>
+        <div id="help">
+            Hello, and welcome to media creator AI. Media creator AI always you to create media for Twitter, Facebook, Chatbox, and Learn More.
+            <br>
+            <br>
+            To create media either enter in text or a url. You may not enter both.
+            <br>
+            A url must start with http(s)://www.(website name). For best results please try and find a website that is simple.
+            <br>
+            Text entries must be at least 15 characters. For best results please try and write atleast 6 sentences.
+            <br>
+            After entering a url or text press the create button. Media for different channels will display below.
+            <br>
+            <br>
 
-                Click the check box to select the media you want to post. Click the Post Selected button to post your selected choses or press Post to all to post to all channels.
-
-            </div>
-           
+            Click the check box to select the media you want to post. Click the Post Selected button to post your selected choses or press Post to all to post to all channels.
 
         </div>
-
     </main>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 </body>
 </html>
