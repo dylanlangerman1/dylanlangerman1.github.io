@@ -94,6 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Help.html" />
+    <Content Include="images\logo.png" />
     <Content Include="ServerSideUSAA.asmx" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
