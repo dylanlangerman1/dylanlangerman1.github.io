@@ -77,7 +77,7 @@ namespace accountmanager
             if (text.Length > 280)
             {
                 s--;
-                text = ParseTwitter(APICall(s,"", otext));
+                return text = ParseTwitter(APICall(s,"", otext));
                 
             }
             string hastpost = hash(text);
