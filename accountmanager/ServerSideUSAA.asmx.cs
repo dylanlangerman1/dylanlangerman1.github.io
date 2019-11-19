@@ -20,26 +20,51 @@ namespace accountmanager
 	[System.Web.Script.Services.ScriptService]
 	public class AccountServices : System.Web.Services.WebService
 	{
+        string accessTokenKey = "1195783853429776384-Sp4CfVckkZhWzF0pzooPlfm3ub4Vuf";
+        string consumerKey = "JukjPgOvcpXRfMVOWkB23IMAd";
+        
+        string accessTokenSecret = "6kXre15q1sCAmz0b6PlfpcQlbK02YVObf1sYAdCYCagXY";
+        string consumerSecret = "M8VMmk4jroOozWF9hKlwJjgbpDhW9hbe0WAcN2n5m1gr4QFD62";
+
         [WebMethod]
         public string posttwitter(string text)
         {
-            string accessTokenKey = "1195783853429776384-Sp4CfVckkZhWzF0pzooPlfm3ub4Vuf";
-            string consumerKey = "JukjPgOvcpXRfMVOWkB23IMAd";
-            string tweetBody = text;
-            string accessTokenSecret = "6kXre15q1sCAmz0b6PlfpcQlbK02YVObf1sYAdCYCagXY";
-            string consumerSecret = "M8VMmk4jroOozWF9hKlwJjgbpDhW9hbe0WAcN2n5m1gr4QFD62";
+           
+            string lh = "http://localhost:50406/index.html";
+            string live = "https://mediacreator.azurewebsites.net/";
+            // Step 1 - Retrieve an OAuth Request Token
+            TwitterService service = new TwitterService(consumerKey, consumerSecret);
+            OAuthRequestToken requestToken = service.GetRequestToken(); // <-- The registered callback URL
 
-            var client = new RestClient("https://twitterbukativ1.p.rapidapi.com/tweet/");
-            var request = new RestRequest(Method.POST);
-            request.AddHeader("x-rapidapi-host", "TwitterBukatiV1.p.rapidapi.com");
-            request.AddHeader("x-rapidapi-key", "7a5fd9b7cbmsh7bac13f2daed15fp1b8a46jsn791267897399");
-            request.AddHeader("content-type", "application/x-www-form-urlencoded");
-            request.AddParameter("application/x-www-form-urlencoded",
-                "accessTokenKey="+accessTokenKey+"&consumerKey="+consumerKey+"&tweetBody="+tweetBody+"&accessTokenSecret="+accessTokenSecret+"&consumerSecret="+consumerSecret,
-                ParameterType.RequestBody);
-            IRestResponse response = client.Execute(request);
-            JObject json = JObject.Parse(response.Content);
-            return json.ToString();
+            // Step 2 - Redirect to the OAuth Authorization URL
+            Uri uri = service.GetAuthenticationUrl(requestToken);
+            return uri.AbsoluteUri;
+           
+
+            //var client = new RestClient("https://twitterbukativ1.p.rapidapi.com/tweet/");
+            //var request = new RestRequest(Method.POST);
+            //request.AddHeader("x-rapidapi-host", "TwitterBukatiV1.p.rapidapi.com");
+            //request.AddHeader("x-rapidapi-key", "7a5fd9b7cbmsh7bac13f2daed15fp1b8a46jsn791267897399");
+            //request.AddHeader("content-type", "application/x-www-form-urlencoded");
+            //request.AddParameter("application/x-www-form-urlencoded",
+            //    "accessTokenKey="+accessTokenKey+"&consumerKey="+consumerKey+"&tweetBody="+tweetBody+"&accessTokenSecret="+accessTokenSecret+"&consumerSecret="+consumerSecret,
+            //    ParameterType.RequestBody);
+            //IRestResponse response = client.Execute(request);
+            //JObject json = JObject.Parse(response.Content);
+            //return json.ToString();
+        }
+
+        [WebMethod]
+        public TwitterStatus SendTweet(string message)
+        {
+            TwitterService service = new TwitterService(consumerKey, consumerSecret);
+            service.AuthenticateWith(accessTokenKey, accessTokenSecret);
+
+            return service.SendTweet(new SendTweetOptions()
+            {
+                Status = message
+            });
+            //return null;
         }
 
         [WebMethod]

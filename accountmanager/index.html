@@ -69,7 +69,30 @@
                     dataType: "json",
                     success: function (msg) {
                         if (msg.d) {
-                           
+                            alert(msg.d);
+                        }
+                    },
+                    error: function (e) {
+                        alert("Error");
+                    }
+                });
+
+            
+
+        }
+        function PostPost(message) {
+            text = "hi";
+                var webMethod = "ServerSideUSAA.asmx/SendTweet";
+                var parameters = "{\"message\":\"" + encodeURI(message) + "\"}";
+                $.ajax({
+                    type: "POST",
+                    url: webMethod,
+                    data: parameters,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (msg) {
+                        if (msg.d) {
+                            alert(msg.d);
                         }
                     },
                     error: function (e) {
@@ -398,7 +421,7 @@
 
 
 
-                                <button class="btn btn-lg btn-primary text-uppercase" style="float:right;">
+                                <button class="btn btn-lg btn-primary text-uppercase" style="float:right;" onclick="PostPost($('#twitter').html())">
                                     Post all
                                 </button>
 
