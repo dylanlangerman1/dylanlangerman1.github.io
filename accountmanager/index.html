@@ -87,12 +87,15 @@
                 $.ajax({
                     type: "POST",
                     url: webMethod,
+                    complete: function () {
+                       window.open("https://www.twitter.com");
+                    },
                     data: parameters,
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function (msg) {
                         if (msg.d) {
-                            window.open("https://www.twitter.com");
+                            
                         }
                     },
                     error: function (e) {
