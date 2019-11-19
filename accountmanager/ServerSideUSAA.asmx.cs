@@ -7,10 +7,12 @@ using System.Data;
 using RestSharp;
 using Newtonsoft.Json.Linq;
 using System.Diagnostics;
+using Twitterizer;
 
 namespace accountmanager
 {
 	
+
 	[WebService(Namespace = "http://tempuri.org/")]
 	[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
 	[System.ComponentModel.ToolboxItem(false)]
@@ -18,8 +20,31 @@ namespace accountmanager
 	public class AccountServices : System.Web.Services.WebService
 	{
         [WebMethod]
+        public string posttwitter(string text)
+        {
+            string accessTokenKey = "1195783853429776384-Sp4CfVckkZhWzF0pzooPlfm3ub4Vuf";
+            string consumerKey = "JukjPgOvcpXRfMVOWkB23IMAd";
+            string tweetBody = text;
+            string accessTokenSecret = "6kXre15q1sCAmz0b6PlfpcQlbK02YVObf1sYAdCYCagXY";
+            string consumerSecret = "M8VMmk4jroOozWF9hKlwJjgbpDhW9hbe0WAcN2n5m1gr4QFD62";
+
+            var client = new RestClient("https://twitterbukativ1.p.rapidapi.com/tweet/");
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("x-rapidapi-host", "TwitterBukatiV1.p.rapidapi.com");
+            request.AddHeader("x-rapidapi-key", "7a5fd9b7cbmsh7bac13f2daed15fp1b8a46jsn791267897399");
+            request.AddHeader("content-type", "application/x-www-form-urlencoded");
+            request.AddParameter("application/x-www-form-urlencoded",
+                "accessTokenKey="+accessTokenKey+"&consumerKey="+consumerKey+"&tweetBody="+tweetBody+"&accessTokenSecret="+accessTokenSecret+"&consumerSecret="+consumerSecret,
+                ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+            JObject json = JObject.Parse(response.Content);
+            return json.ToString();
+        }
+
+        [WebMethod]
         public List<String> HelperAPI(string url = "",string text = "")
         {
+            
             List<String> Responses = new List<string>();
             
             string twitter = ParseTwitter(APICall(3, url, text));
@@ -39,7 +64,7 @@ namespace accountmanager
             string abbreviated = ParseAbbreviated(APICall(6, url, text));
             Responses.Add(abbreviated);
             return Responses;
-
+            
         }
         [WebMethod]
         public string hash(string text)

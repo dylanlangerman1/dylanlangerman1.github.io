@@ -57,12 +57,35 @@
             }
 
         }
+        function PostTwitter(text) {
+            text = "hi";
+                var webMethod = "ServerSideUSAA.asmx/posttwitter";
+                var parameters = "{\"text\":\"" + encodeURI(text) + "\"}";
+                $.ajax({
+                    type: "POST",
+                    url: webMethod,
+                    data: parameters,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (msg) {
+                        if (msg.d) {
+                           
+                        }
+                    },
+                    error: function (e) {
+                        alert("Error");
+                    }
+                });
+
+            
+
+        }
 
         function urlBlur() {
 
             if ($('#formUrl').val() != "") {
                 $('#formText').attr('readonly', 'true');
-                var pattern = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
+                var pattern = /[hH]ttps?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
                 if (pattern.test($('#formUrl').val()) != true) {
 
                     $("#urlSpan").css("visibility", "visible");
@@ -384,7 +407,7 @@
 
 
 
-                                <button class="btn btn-lg btn-primary text-uppercase" style="float:left;">
+                                <button class="btn btn-lg btn-primary text-uppercase" style="float:left;" onclick="PostTwitter('hi')">
                                     Selected
                                 </button>
 
