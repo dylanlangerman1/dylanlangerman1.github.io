@@ -77,9 +77,6 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="Twitterizer2">
-      <HintPath>\\Mac\Home\Downloads\Twitterizer-develop\Debug\Twitterizer2\Full\Twitterizer2.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">

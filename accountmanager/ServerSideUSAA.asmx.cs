@@ -7,7 +7,7 @@ using System.Data;
 using RestSharp;
 using Newtonsoft.Json.Linq;
 using System.Diagnostics;
-using Twitterizer;
+//using Twitterizer;
 
 namespace accountmanager
 {
