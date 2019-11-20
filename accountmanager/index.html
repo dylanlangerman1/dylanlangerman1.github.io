@@ -57,14 +57,14 @@
             }
 
         }
-        function PostTwitter(text) {
+        function PostTwitter() {
             text = "hi";
                 var webMethod = "ServerSideUSAA.asmx/posttwitter";
-                var parameters = "{\"text\":\"" + encodeURI(text) + "\"}";
+                //var parameters = "{\"text\":\"" + encodeURI(text) + "\"}";
                 $.ajax({
                     type: "POST",
                     url: webMethod,
-                    data: parameters,
+                    //data: parameters,
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function (msg) {
@@ -88,14 +88,17 @@
                     type: "POST",
                     url: webMethod,
                     complete: function () {
-                       window.open("https://www.twitter.com");
+                       //window.open("https://www.twitter.com");
                     },
                     data: parameters,
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function (msg) {
-                        if (msg.d) {
-                            
+                        if (msg.d === null) {
+                            PostTwitter();
+                        }
+                        else {
+                            window.open("https://www.twitter.com");
                         }
                     },
                     error: function (e) {
@@ -234,7 +237,15 @@
             
         }
 
-       
+       .authBtn{
+           width:25vh;
+           font-weight:inherit;
+           border-radius: 1.1vh;
+           background-color:#007bff;
+           color:white;
+           border: none;
+           text-align:center;
+       }
 
         
 
@@ -278,7 +289,7 @@
                 <div id="usaa-logo" class="navigation-tab usaa-logo red-stripe acc-touch-menu-wrapper">
                     <a accesskey="1" class="highlight-rec" href="index.html"> <img src="images/logo.png" alt="USAA Home" title="" style="height:10vh;"> </a>
                 </div>
-            </a>
+            
             <button class="navbar-toggler" type="button" style="margin:0;" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -316,6 +327,24 @@
 
 
             <div id="loaded">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <button class="authBtn" style="float:right; margin-bottom:5px;" onclick="PostTwitter()">
+                            Authorize Twitter
+                        </button>
+                    </div>
+                    
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <button class="authBtn" style="float:right;">
+                            Authorize Facebook
+                        </button>
+                    </div>
+                </div>
+                
+                
                 <form id="myForm">
                     URL: <input type="text" name="url" id="formUrl" onkeyup="urlBlur()" />
 
@@ -332,9 +361,11 @@
 
 
                 </form>
-                
+
                 <button class="btn btn-lg btn-primary text-uppercase" style="display:inherit;"
-                        onclick="ParseText($('#formUrl').val(), $('#formText').val(),validEntry)">Create</button>
+                        onclick="ParseText($('#formUrl').val(), $('#formText').val(),validEntry)">
+                    Create
+                </button>
 
                 <div id="results">
 
@@ -361,27 +392,18 @@
                                         <p contenteditable="true" class="card-text" id="twitter">
 
                                         </p>
+                                        <div class="row">
+                                            <button class="authBtn" style="width:auto;" onclick="PostPost($('#twitter').html())">
+                                                 Post on Twitter 
+                                            </button>
+                                        </div>
+                                        
 
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-6 mb-4">
                                 <div class="card h-100">
-
-                                    <div class="card-body">
-                                        <h4 class="card-title">
-                                            <input type="checkbox" name="name" value="" />
-                                            <a href="#">Chatbot</a>
-                                        </h4>
-                                        <p contenteditable="true" class="card-text" id="chatbox">
-
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 mb-4">
-                                <div class="card h-100">
-
                                     <div class="card-body">
                                         <h4 class="card-title">
                                             <input type="checkbox" name="name" value="" />
@@ -391,7 +413,28 @@
                                         <p contenteditable="true" class="card-text" id="facebook">
 
                                         </p>
+                                        <div class="row">
+                                            <button class="authBtn" style="width:auto;">
+                                                Post on Facebook
+                                            </button>
+                                        </div>
                                     </div>
+
+                                    
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                            <input type="checkbox" name="name" value="" />
+                                            <a href="#">Chatbot</a>
+                                        </h4>
+                                        <p contenteditable="true" class="card-text" id="chatbox">
+
+                                        </p>
+                                    </div>
+
                                 </div>
                             </div>
                             <div class="col-lg-6 mb-4">
@@ -416,29 +459,14 @@
                     <div class="container" style="width:80vw;">
 
                         <!-- Page Heading -->
-                        
-
-
-                        <div class="row" style="text-align: center; margin:auto;" >
-                            <div class="col-lg-6 mb-4" style="width:auto;">
 
 
 
-                                <button class="btn btn-lg btn-primary text-uppercase" style="float:right;" onclick="PostPost($('#twitter').html())">
-                                    Post all
-                                </button>
-
-                            </div>
-                            <div style="width:auto; padding-left: 15px;">
-
-
-
-                                <button class="btn btn-lg btn-primary text-uppercase" style="float:left;" onclick="PostTwitter('hi')">
-                                    Selected
-                                </button>
-
-
-                            </div>
+                        <div class="row" style="text-align: center; margin:auto;">
+                            <button class="btn btn-lg btn-primary text-uppercase" onclick="PostPost($('#twitter').html())">
+                                Post all
+                            </button>
+                            
                         </div>
 
 

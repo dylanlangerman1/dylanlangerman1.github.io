@@ -27,7 +27,7 @@ namespace accountmanager
         string consumerSecret = "M8VMmk4jroOozWF9hKlwJjgbpDhW9hbe0WAcN2n5m1gr4QFD62";
 
         [WebMethod]
-        public string posttwitter(string text)
+        public string posttwitter()
         {
            
             string lh = "http://localhost:50406/index.html";
@@ -54,7 +54,7 @@ namespace accountmanager
             {
                 Status = message
             });
-            //return null;
+            
         }
 
         [WebMethod]
