@@ -99,11 +99,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Contact.html" />
     <Content Include="Help.html" />
     <Content Include="images\logo.png" />
     <Content Include="ServerSideUSAA.asmx" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
+    <Content Include="Services.html" />
     <Content Include="usaaproj.html" />
     <Content Include="Web.config" />
   </ItemGroup>
