@@ -109,7 +109,7 @@ namespace accountmanager
             //JObject json = JObject.Parse(text);
             //text = json.GetValue("post").ToString();
 
-            string[] greetings = { "Hello, Twitter follower.","Hi,","Real talk,","Greetings,"
+            string[] greetings = { "Hello Twitter followers, ","Hi,","Real talk,","Greetings,"
             ,"What's good!"};
             Random rnd = new Random();
             string greeting = greetings[rnd.Next(0, greetings.Count())];
