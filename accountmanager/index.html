@@ -33,6 +33,7 @@
                         $("#loading").css("visibility", "hidden");
 
                         $("#loaded").css("visibility", "visible");
+                        twitterBlur();
                     },
                     data: parameters,
                     contentType: "application/json; charset=utf-8",
@@ -135,6 +136,18 @@
                 $('#formUrl').css('border-color', "");
                 validEntry = false;
 
+            }
+        }
+        function twitterBlur() {
+             var count = $('#twitter').html().length;
+
+            $('#Tcount').html(count);
+            if (count > 280) {
+                $('#twitter').css('border-color', "red");
+
+            }
+            else {
+                $('#twitter').css('border-color', "none");
             }
         }
         function textBlur() {
@@ -389,15 +402,18 @@
                                             <img src="https://content.usaa.com/mcontent/static_assets/Media/SocMedIcon_twitter_v2.png?cacheid=2393434372_p" alt="">
 
                                         </h4>
-                                        <p contenteditable="true" class="card-text" id="twitter">
+                                        <p contenteditable="true" class="card-text" id="twitter"  onkeyup="twitterBlur()">
 
                                         </p>
+                                        <div class="row" style="display:inline;">
+                                            <span id="Tcount" class="right">0</span><span class="right">Character Count: </span>
+                                        </div>
                                         <div class="row">
                                             <button class="authBtn" style="width:auto;" onclick="PostPost($('#twitter').html())">
-                                                 Post on Twitter 
+                                                Post on Twitter
                                             </button>
                                         </div>
-                                        
+
 
                                     </div>
                                 </div>

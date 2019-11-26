@@ -68,13 +68,13 @@ namespace accountmanager
             Responses.Add(twitter);
             //System.Threading.Thread.Sleep(3000);
 
-            string chatbot = ParseChatbot(APICall(4, url, text));
+            string chatbot = ParseChatbot(APICall(5, url, text));
             Responses.Add(chatbot);
 
             //Sleep(3000) makes application wait 3 second to avoid a time out for API calls
             //System.Threading.Thread.Sleep(3000);
             
-            string facebook = ParseFacebook(APICall(5, url, text));
+            string facebook = ParseFacebook(APICall(4, url, text));
             Responses.Add(facebook);
             
             string abbreviated = ParseAbbreviated(APICall(6, url, text));
